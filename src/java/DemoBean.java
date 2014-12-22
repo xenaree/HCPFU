@@ -24,7 +24,9 @@ public class DemoBean {
     }
 
     public String upload() throws IOException {
-        file.write("C:\\test\\" + getFileName(file));
+        UnZip zipFile = new UnZip();
+        zipFile.unZipIt("E:\\MyFilee.zip", "E:\\outputzip2");
+//        file.write("C:\\test\\" + getFileName(file));
         return "success";
     }
 

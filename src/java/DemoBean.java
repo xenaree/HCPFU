@@ -1,4 +1,5 @@
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import javax.faces.bean.ManagedBean;
@@ -14,6 +15,15 @@ import javax.servlet.http.Part;
 public class DemoBean {
 
     private Part file;
+    private String destination;
+
+    public void setDestination(String Destination) {
+        this.destination = Destination;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
 
     public void setFile(Part file) {
         this.file = file;
@@ -24,10 +34,15 @@ public class DemoBean {
     }
 
     public String upload() throws IOException {
-        UnZip zipFile = new UnZip();
-        zipFile.unZipIt("E:\\MyFilee.zip", "E:\\outputzip2");
-//        file.write("C:\\test\\" + getFileName(file));
-        return "success";
+//        UnZip zipFile = new UnZip();
+//        zipFile.unZipIt("E:\\MyFilee.zip", "E:\\outputzip2");
+
+        if (new File(destination).exists()) {
+            file.write(destination + getFileName(file));
+            return "success";
+        }
+        return "fail";
+
     }
 
     public String getFileName(Part part) {

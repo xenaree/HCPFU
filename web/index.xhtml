@@ -8,8 +8,8 @@
     <h:body>
         <h1>HANA Cloud Platform File Uploader</h1>
         <h:form enctype="multipart/form-data">
-            <h:inputFile value="#{demoBean.file}"/><br/><br/>
-            
+            Select the file to upload:<h:inputFile value="#{demoBean.file}"/><br/>
+            Specify the destination path:<h:inputText value="#{demoBean.destination}"/><br/>
             <h:commandButton value="Upload to Cloud" action="#{demoBean.upload()}"/>
             
         </h:form>
